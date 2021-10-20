@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Migrations\\": "../00-migrations/src/",
+      "Container\\": "src/"
+    }
+  }
+}
