@@ -21,7 +21,7 @@ class MigrationsRunner
         History $history,
         MigrationsFinder $finder,
         SqlRunner $sqlRunner,
-        Logger $logger
+        Logger $logger,
     ) {
         $this->history = $history;
         $this->finder = $finder;
