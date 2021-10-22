@@ -103,6 +103,9 @@
     "psr/log": {
         "version": "2.0.0"
     },
+    "symfony/asset": {
+        "version": "v5.3.4"
+    },
     "symfony/cache": {
         "version": "v5.3.8"
     },
@@ -206,6 +209,9 @@
     "symfony/options-resolver": {
         "version": "v5.3.7"
     },
+    "symfony/password-hasher": {
+        "version": "v5.3.8"
+    },
     "symfony/polyfill-intl-grapheme": {
         "version": "v1.23.1"
     },
@@ -251,6 +257,30 @@
     },
     "symfony/runtime": {
         "version": "v5.3.4"
+    },
+    "symfony/security-bundle": {
+        "version": "5.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.3",
+            "ref": "3307d76caa2d12fb10ade57975beb3d8975df396"
+        },
+        "files": [
+            "config/packages/security.yaml"
+        ]
+    },
+    "symfony/security-core": {
+        "version": "v5.3.8"
+    },
+    "symfony/security-csrf": {
+        "version": "v5.3.4"
+    },
+    "symfony/security-guard": {
+        "version": "v5.3.7"
+    },
+    "symfony/security-http": {
+        "version": "v5.3.8"
     },
     "symfony/service-contracts": {
         "version": "v2.4.0"
@@ -298,6 +328,28 @@
     },
     "symfony/var-exporter": {
         "version": "v5.3.8"
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.12",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.9",
+            "ref": "0f274572ea315eb3b5884518a50ca43f211b4534"
+        },
+        "files": [
+            "assets/styles/app.css",
+            "assets/controllers.json",
+            "assets/controllers/hello_controller.js",
+            "assets/app.js",
+            "assets/bootstrap.js",
+            "config/packages/webpack_encore.yaml",
+            "config/packages/test/webpack_encore.yaml",
+            "config/packages/prod/webpack_encore.yaml",
+            "config/packages/assets.yaml",
+            "package.json",
+            "webpack.config.js"
+        ]
     },
     "symfony/yaml": {
         "version": "v5.3.6"

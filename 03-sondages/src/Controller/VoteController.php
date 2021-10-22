@@ -10,18 +10,21 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Security;
 
 class VoteController
 {
     private ReponseRepository $reponseRepository;
     private EntityManagerInterface $em;
     private VoteRepository $voteRepository;
+    private Security $security;
 
-    public function __construct(ReponseRepository $reponseRepository, EntityManagerInterface $em, VoteRepository $voteRepository)
+    public function __construct(ReponseRepository $reponseRepository, EntityManagerInterface $em, VoteRepository $voteRepository, Security $security)
     {
         $this->reponseRepository = $reponseRepository;
         $this->em = $em;
         $this->voteRepository = $voteRepository;
+        $this->security = $security;
     }
 
     // /survey_id/vote/reponse_id
@@ -37,11 +40,8 @@ class VoteController
             throw new NotFoundHttpException("Cette réponse n'existe pas");
         }
 
-        // ALGO DE VERIFICATION
-        $votes = $this->voteRepository->countVotesFromIpForSurvey($request->getClientIp(), $reponse->getSurvey());
-
-        if ($votes > 0) {
-            throw new AccessDeniedHttpException("Vous avez déjà voté enfoiré.e");
+        if ($this->security->isGranted('CAN_VOTE', $reponse->getSurvey()) === false) {
+            throw new AccessDeniedHttpException("Pas le droit de revoter !");
         }
 
         // 3. Créer une entité Vote et renseigner la réponse
