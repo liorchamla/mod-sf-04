@@ -19,3 +19,8 @@ survey_vote:
   path: /{survey_id}/vote/{reponse_id}
   controller: App\Controller\VoteController::vote
   methods: [POST]
+
+api_survey_infos:
+  path: /api/survey/{id}
+  controller: App\Controller\SurveyApiController::getSurveyInfos
+  methods: [GET]

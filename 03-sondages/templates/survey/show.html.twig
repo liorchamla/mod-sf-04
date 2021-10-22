@@ -3,7 +3,7 @@
 {% block body %}
     <h1>{{ survey.question }}</h1>
 
-    <div id="votes"></div>
+    <div id="votes" data-survey-id="{{ survey.id }}"></div>
 
     {{ encore_entry_script_tags('vote') }}
 {% endblock %}
