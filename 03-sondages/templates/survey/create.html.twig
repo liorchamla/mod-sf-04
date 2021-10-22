@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Salut les amis</h1>
+
+    <form method="post">
+        <input type="text" name="question" id="" placeholder="Question à poser">
+        <select name="duration" id="">
+            <option value="60">1 minute</option>
+            <option value="120">2 minutes</option>
+            <option value="300">5 minutes</option>
+        </select>
+        <p>Réponses possibles :</p>
+        <div id="reponses">
+            <div>
+                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[0]" />
+            </div>
+            <div>
+                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[1]" />
+            </div>
+        </div>
+        <button type="button" id="add-reponse">
+            Ajouter une réponse
+        </button>
+        <button>Enregistrer</button>
+    </form>
+
+    <script>
+        let index = 2;
+
+        document.querySelector('#add-reponse').addEventListener('click', function() {
+            const template = `
+            <div>
+                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[${index}]" id="reponses_${index}" />
+            </div>
+            `;
+            document.querySelector('#reponses').insertAdjacentHTML('beforeEnd', template);
+            document.querySelector('#reponses_' + index).focus();
+            index++;
+        });
+    </script>
+{% endblock %}

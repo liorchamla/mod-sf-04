@@ -1,3 +1,13 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+survey_create:
+  path: /create
+  controller: App\Controller\CreateSurveyController::showForm
+  methods: [GET]
+
+survey_save:
+  path: /create
+  controller: App\Controller\CreateSurveyController::save
+  methods: [POST]
