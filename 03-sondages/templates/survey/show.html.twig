@@ -1,0 +1,12 @@
+<h1>{{ survey.question }}</h1>
+
+
+{% if not hasAlreadyVoted %}
+    {% for reponse in survey.reponses %}
+        <form action="/{{ survey.id }}/vote/{{ reponse.id }}" method="post">
+            <button>{{ reponse.text }}</button>
+        </form>
+    {% endfor %}
+{% else %}
+    <h2>Vous avez déjà voté</h2>
+{% endif %}

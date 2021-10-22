@@ -1,6 +1,9 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+survey_show:
+  path: /{id<\d+>}
+  controller: App\Controller\ShowSurveyController::show
 
 survey_create:
   path: /create
@@ -10,4 +13,9 @@ survey_create:
 survey_save:
   path: /create
   controller: App\Controller\CreateSurveyController::save
+  methods: [POST]
+
+survey_vote:
+  path: /{survey_id}/vote/{reponse_id}
+  controller: App\Controller\VoteController::vote
   methods: [POST]

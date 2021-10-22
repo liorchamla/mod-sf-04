@@ -2,21 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Survey;
 use App\Form\SurveyType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Constraints\Choice;
-use Symfony\Component\Validator\Constraints\Collection;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Twig\Environment;
 
@@ -44,7 +35,6 @@ class CreateSurveyController
 
     public function save(Request $request)
     {
-        dd($request);
         // $builder = $this->factory->createNamedBuilder("", SurveyType::class);
         // $form = $builder->getForm();
         $form = $this->factory->createNamed('', SurveyType::class);

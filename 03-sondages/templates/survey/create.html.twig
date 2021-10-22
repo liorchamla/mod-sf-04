@@ -13,10 +13,10 @@
         <p>Réponses possibles :</p>
         <div id="reponses">
             <div>
-                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[0]" />
+                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[0][text]" />
             </div>
             <div>
-                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[1]" />
+                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[1][text]" />
             </div>
         </div>
         <button type="button" id="add-reponse">
@@ -31,7 +31,7 @@
         document.querySelector('#add-reponse').addEventListener('click', function() {
             const template = `
             <div>
-                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[${index}]" id="reponses_${index}" />
+                <input type="text" placeholder="Ajoutez une réponse possible" name="reponses[${index}][text]" id="reponses_${index}" />
             </div>
             `;
             document.querySelector('#reponses').insertAdjacentHTML('beforeEnd', template);

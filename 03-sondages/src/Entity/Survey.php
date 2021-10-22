@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SurveyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,18 @@ class Survey
      * @ORM\Column(type="integer")
      */
     private $duration;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Reponse::class, mappedBy="survey", orphanRemoval=true, cascade={"persist"})
+     */
+    private $reponses;
+
+    public function __construct()
+    {
+        $this->reponses = new ArrayCollection();
+    }
+
+    // public array $reponses = [];
 
     public function getId(): ?int
     {
@@ -52,6 +66,36 @@ class Survey
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reponse[]
+     */
+    public function getReponses(): Collection
+    {
+        return $this->reponses;
+    }
+
+    public function addReponse(Reponse $reponse): self
+    {
+        if (!$this->reponses->contains($reponse)) {
+            $this->reponses[] = $reponse;
+            $reponse->setSurvey($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReponse(Reponse $reponse): self
+    {
+        if ($this->reponses->removeElement($reponse)) {
+            // set the owning side to null (unless already changed)
+            if ($reponse->getSurvey() === $this) {
+                $reponse->setSurvey(null);
+            }
+        }
 
         return $this;
     }
