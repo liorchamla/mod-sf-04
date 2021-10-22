@@ -78,6 +78,9 @@ class SurveyType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Survey::class,
+            'csrf_protection' => true,
+            'csrf_field_name' => 'csrfToken',
+            'csrf_token_id' => 'survey_token'
         ]);
     }
 }

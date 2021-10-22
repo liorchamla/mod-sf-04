@@ -4,6 +4,7 @@
     <h1>Salut les amis</h1>
 
     <form method="post">
+        <input type="hidden" name="csrfToken" value="{{ csrf_token('survey_token') }}">
         <input type="text" name="question" id="" placeholder="Question à poser">
         <select name="duration" id="">
             <option value="60">1 minute</option>
